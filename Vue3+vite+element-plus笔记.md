@@ -484,5 +484,70 @@ a{
 }
 ```
 
+##### 1.6 `koa2`项目初始化操作
 
+> 通常我们可以通过借助于脚手架,快速创建一个koa2项目,当然也可以自己从头搭建;脚手架会帮助我们提前搭建好基本的架子
+
+1. `koa-generator`快速生成`koa`服务的脚手架工具
+
+​	全局安装脚手架工具
+
+```shell
+npm install -g koa-generator
+#or
+cnpm install -g koa-generator
+#or
+yarn global add koa-generator
+```
+
+​	进入项目文件夹目录,执行生成命令
+
+```shell
+#koa2 + 项目名称
+koa2 manager-server
+```
+
+> 如果无法使用koa2命令,说明需要配置环境变量,window用户,需要找到koa-generator的安装目录,找到里面bin目录下面的koa2命令文件,然后配置到环境变量中;mac用户可直接创建软连接,指向到/usr/local/bin中,如: ln -s /User/jack/.config/yarn/global/node_modules/koa-generator/bin/koa2 /usr/local/bin/koa2
+
+​	安装依赖
+
+```shell
+npm install 
+#or
+cnpm install
+#or
+yarn
+```
+
+​	启动服务
+
+```shell
+yarn start
+#or
+node .bin/www
+#默认的访问地址是localhost:3000/
+```
+
+2. `koa2-generator`创建的koa2框架目录
+
+```js
+|--	koa-server
+		|-- app.js									#根入口
+    |-- package-lock.json		
+		|--	package.json						#项目依赖包文件
+    |-- bin
+				|-- www									#运行启动文件
+    |--	public									#公共资源
+    		|--	images
+				|--	javascripts
+				|--	stylesheets
+						|--	style.css
+		|-- routes
+				|--	index.js						#定义了localhost:3000/之下的路由
+				|--	user.js							#定义了loca:3000/user/之下的路由
+		|--	views										#视图Pug是一款HTML引擎模板,专门为node.js开发
+				|-- erroe.pug
+				|--	index.pug
+				|--	layout.pug
+```
 
