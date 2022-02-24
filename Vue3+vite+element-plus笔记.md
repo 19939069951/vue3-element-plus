@@ -697,3 +697,35 @@ mac下安装
 | 大于等于 | $gte |
 | 小于等于 | $lte |
 
+##### 1.7 vuex封装
+
+1. 在store目录下创建index.js文件
+
+```js
+import { createStore } from "vuex";
+import mutations from './mutations'
+import storage from '../utils/storage'
+
+const state = {
+  userInfo: '' || storage.getItem('userInfo')  //获取用户信息
+}
+
+export default createStore({
+  state,
+  mutations
+})
+```
+
+2. 在store目录下创建mutations.js文件
+
+```js
+import storage from "../utils/storage";
+
+export default{
+  saveUserInfo(state,userInfo){
+    state.userInfo = userInfo
+    storage.setItem('userInfo',userInfo)
+  }
+} 
+```
+
