@@ -1,3 +1,9 @@
+```shell
+添加代理：
+PS > git config --global http.proxy
+PS> git config --global --unset http.proxy
+```
+
 ### 1. 项目准备
 
 ##### 1.1 全局安装`vue`脚手架
@@ -550,4 +556,144 @@ node .bin/www
 				|--	index.pug
 				|--	layout.pug
 ```
+
+3. 安装log4js日志打印文件
+
+```shell
+# 安装日志打印包
+npm install log4js -S   // -D 开发环境  -S  生产环境
+# 使用log4js
+const log4js = require('log4js')
+const log = log4js.getLogger()
+log.level = 'debug'
+log.debug('some debug messages')
+
+#log4js的封装
+const log4js = require('log4js')
+const levels = {
+  'trace': log4js.levels.TRACE,
+  'debug': log4js.levels.DEBUG,
+  'info': log4js.levels.INFO,
+  'warn': log4js.levels.WARN,
+  'error': log4js.levels.ERROR,
+  'fatal': log4js.levels.FATAL,
+}
+log4js.configure({
+  appenders:{
+    console:{type: 'console'},
+    info:{
+      type: 'file',
+      filename: 'logs/all-logs.log'
+    },
+    error:{
+      type: 'dateFile',
+      filename: 'logs/log',
+      pattern: 'yyyy-MM-dd.log',
+      alwaysIncludePattern: true //设置文件名称为 filename + pattern
+    }
+  },
+  categories:{
+    default:{
+      appenders:['console'],
+      level: 'debug'
+    },
+    info:{
+      appenders: ['info','console'],
+      level: 'info'
+    },
+    error:{
+      appenders: ['error','console'],
+      level: 'error'
+    }
+  }
+})
+/**
+ * 日志输出,level为debug
+ * @param {string} content 
+ */
+exports.debug = (content)=>{
+  let logger = log4js.getLogger()
+  logger.level = levels.debug
+  logger.debug(content)
+}
+/**
+ * 日志输出,level为error
+ * @param {string} content 
+ */
+ exports.error = (content)=>{
+  let logger = log4js.getLogger('error')
+  logger.level = levels.error
+  logger.error(content)
+}
+/**
+ * 日志输出,level为info
+ * @param {string} content 
+ */
+ exports.info = (content)=>{
+  let logger = log4js.getLogger('info')
+  logger.level = levels.info
+  logger.info(content)
+}
+# log4js封装后的使用
+// 引入封装的文件
+const log4js = require('./utils/log4j')
+// 在错误中打印日志
+app.on('error', (err, ctx) => {
+  log4js.error(`${err.stack}`)
+});
+```
+
+4.  MongoDB的安装与使用 
+
+```shell
+windows下安装
+	#1.下载安装包 一键安装
+  #启动服务
+  mongod --config "C:\Program Files\MongoDB\Server\4.4\bin\mongod.cfg"
+  #注册mongod服务
+  mongod --config "C:\Program Files\MongoDB\Server\4.4\bin\mongod.cfg" --serviceName "MongoDB" --install
+ 
+mac下安装
+#1.下载安装包并解压
+#2.创建软连接
+		ln -s /工作空间/install-soft/mongodb-macos-x86_64-4.4.2/bin/mongod /usr/local/bin/mongod
+		ln -s /工作空间/install-soft/mongodb-macos-x86_64-4.4.2/bin/mongo /usr/local/bin/mongo
+#3.启动服务
+		mongod --conf /工作空间/install-soft/mongodb-macos-x86_64-4.4.2/mongo/config/mongo.conf
+#4.环境变量配置
+		ln -s /工作空间/install-soft/mongodb-macos-x86_64-4.4.2/bin/mongod /usr/local/bin/mongod
+		ln -s /工作空间/install-soft/mongodb-macos-x86_64-4.4.2/bin/mongo /usr/local/bin/mongo
+```
+
+5. Mongo语法
+
+数据库操作
+
+| 创建数据库 | use demo          |
+| ---------- | ----------------- |
+| 查看数据库 | show dbs          |
+| 删除数据库 | db.dropDatabase() |
+
+集合操作
+
+| 创建集合 | db.createCollection(name) |
+| -------- | ------------------------- |
+| 查看集合 | show collections          |
+| 删除集合 | db.collection.drop()      |
+
+文档操作
+
+| 创建文档 | db.collection.insertOne({})<br />db.collection.insertMany([]) |
+| -------- | ------------------------------------------------------------ |
+| 查看文档 | db.collections.find({})                                      |
+| 删除文档 | db.collection.deleteOne()<br />db.collection.deleteMany()    |
+| 更新文档 | db.collection.update({},{},false,true)                       |
+
+条件操作
+
+| 大于     | $gt  |
+| -------- | ---- |
+| 小于     | $lt  |
+| 大于等于 | $gte |
+| 小于等于 | $lte |
 

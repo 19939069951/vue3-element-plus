@@ -1,8 +1,8 @@
 <!--
- * @Description: 
+ * @Description: 项目整体布局页面
  * @Author: Li Guangyin
  * @Date: 2022-02-23 13:44:46
- * @LastEditTime: 2022-02-23 22:13:13
+ * @LastEditTime: 2022-02-24 23:04:39
 -->
 <template>
   <div class="basic-layout">
@@ -23,7 +23,7 @@
 <script>
 export default{
   name: 'Home',
-}
+} 
 </script>
 <style lang="scss">
 .basic-layout{

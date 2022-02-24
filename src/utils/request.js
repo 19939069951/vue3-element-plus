@@ -2,7 +2,7 @@
  * @Description: axios 二次封装
  * @Author: Li Guangyin
  * @Date: 2022-02-23 19:56:26
- * @LastEditTime: 2022-02-23 21:25:42
+ * @LastEditTime: 2022-02-25 00:10:41
  */
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
@@ -48,6 +48,9 @@ function request(options){
   options.method = options.method || 'get'
   if(options.method.toLowerCase() === 'get'){
     options.params = options.data;
+  }
+  if(typeof options.mock != 'undefined'){
+    config.mock = options.mock 
   }
   // 确保线上调的地址是正确的地址,而不是mock地址
   if(config.env === 'prod'){
