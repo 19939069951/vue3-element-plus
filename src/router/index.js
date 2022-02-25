@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Li Guangyin
  * @Date: 2022-02-23 18:07:38
- * @LastEditTime: 2022-02-24 23:11:45
+ * @LastEditTime: 2022-02-26 02:54:19
  */
 import { createRouter, createWebHistory } from "vue-router";
 
@@ -20,7 +20,7 @@ const routes = [
       {
         path: 'welcome',
         path: '/welcome',
-        meta:{title: '欢迎页面'},
+        meta:{title: '欢迎'},
         component: Welcome
       }
     ]

@@ -2,7 +2,7 @@
  * @Description: axios 二次封装
  * @Author: Li Guangyin
  * @Date: 2022-02-23 19:56:26
- * @LastEditTime: 2022-02-25 00:10:41
+ * @LastEditTime: 2022-02-25 22:37:32
  */
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
@@ -18,8 +18,7 @@ const service = axios.create({
 service.interceptors.request.use((req)=>{
   // todo
   const headers = req.headers;
-  if(!headers.Authorize){
-    headers.Authorize = 'Jack'
+  if(!headers.Authorize){  
   }
   return req;
 })
@@ -29,7 +28,7 @@ service.interceptors.response.use((res)=>{
   const {code,data,msg} = res.data
   if(code === 200){
     return data
-  } else if(code === 40001){
+  } else if(code === 50001){
     ElMessage.error('token 已过期,请重新登录')
     setTimeout(()=>{
       router.push('/login')

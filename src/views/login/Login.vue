@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Li Guangyin
  * @Date: 2022-02-24 23:08:19
- * @LastEditTime: 2022-02-25 00:11:33
+ * @LastEditTime: 2022-02-26 01:27:38
 -->
 <template>
   <div class="login-wrapper">
@@ -25,7 +25,7 @@
 
 <script>
 import {Lock,User} from '@element-plus/icons-vue'
-import {login} from '../../api/login'
+import {login} from '../../api/user'
 export default {
   name: 'Login',
   data(){
@@ -59,8 +59,7 @@ export default {
     handleLogin(){
       this.$refs.userForm.validate((validate)=>{
         if(validate){
-          login(this.user).then(res=>{
-            console.log(res)
+          login(this.userinfo).then(res=>{
             this.$store.commit('saveUserInfo',res)
             this.$router.push('/welcome')
           })
