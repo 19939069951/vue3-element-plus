@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Li Guangyin
  * @Date: 2022-02-24 23:08:19
- * @LastEditTime: 2022-02-26 01:27:38
+ * @LastEditTime: 2022-02-26 19:52:52
 -->
 <template>
   <div class="login-wrapper">
@@ -60,8 +60,12 @@ export default {
       this.$refs.userForm.validate((validate)=>{
         if(validate){
           login(this.userinfo).then(res=>{
-            this.$store.commit('saveUserInfo',res)
-            this.$router.push('/welcome')
+            if(res.token){
+              this.$store.commit('saveUserInfo',res)
+              this.$router.push('/welcome')
+            } else {
+              return;
+            } 
           })
         } else {
           return false;

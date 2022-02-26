@@ -2,12 +2,16 @@
  * @Description: 左侧菜单tree组件
  * @Author: Li Guangyin
  * @Date: 2022-02-26 01:53:35
- * @LastEditTime: 2022-02-26 02:36:29
+ * @LastEditTime: 2022-02-26 20:57:11
 -->
 <template>
   <template v-for="menu in userMenu" :key="menu.id">
     <el-sub-menu v-if="menu.children && menu.children.length > 0 && menu.children[0].menuType == 1" :index="menu.path">
       <template #title>
+        <el-icon>
+          <setting/>
+          <!-- <template v-html="menu.icon"></template> -->
+        </el-icon>
         <span>{{menu.menuName}}</span>
       </template>
       <tree-menu :userMenu="menu.children"></tree-menu>
@@ -35,6 +39,7 @@
 </template>
 
 <script>
+import {Setting,Avatar} from '@element-plus/icons'
 export default {
   name: "TreeMenu",
   props: {
@@ -45,6 +50,10 @@ export default {
       },
     },
   },
+  components:{
+    Setting,
+    Avatar
+  }
 };
 </script>
 

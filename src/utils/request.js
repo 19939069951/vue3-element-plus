@@ -2,7 +2,7 @@
  * @Description: axios 二次封装
  * @Author: Li Guangyin
  * @Date: 2022-02-23 19:56:26
- * @LastEditTime: 2022-02-25 22:37:32
+ * @LastEditTime: 2022-02-26 20:45:54
  */
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
@@ -34,6 +34,8 @@ service.interceptors.response.use((res)=>{
       router.push('/login')
     },3000)
     return Promise.reject('token 已过期,请重新登录')
+  } else if(code === 40001){
+    ElMessage.error(msg)
   } else {
     ElMessage.error('网络异常!')
     return Promise.reject('网络异常!')

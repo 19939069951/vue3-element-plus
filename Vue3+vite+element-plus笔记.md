@@ -697,7 +697,22 @@ mac下安装
 | 大于等于 | $gte |
 | 小于等于 | $lte |
 
-##### 1.7 vuex封装
+##### 1.7 JWT使用
+
+1. 安装jsonwebtoken
+
+```shell
+# 安装jwt
+npm install jsonwebtoken -S
+# 安装koa-jwt 中间件 
+npm install koa -jwt -S
+```
+
+
+
+
+
+##### 1.8 vuex封装
 
 1. 在store目录下创建index.js文件
 
@@ -727,5 +742,58 @@ export default{
     storage.setItem('userInfo',userInfo)
   }
 } 
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### 总结
+
+1. 组件地址必须带后缀
+
+```js
+// 正确
+import('./../views/Welcome.vue)
+// 错误
+import('./..//views/Welcome')
+```
+
+2. vite可配置别名,解决./../问题,类似于Vue里面的@
+
+```js
+resolve:{
+  alias:{
+    '@':path.resolve(__dirname,'./src')
+  }
+}
+```
+
+3. 全局的mixin样式问题,可以通过vite配置
+
+```js
+css:{
+  preprocessorOptions:{
+    scss:{
+      additionalDate:`@import '@/assets/style/base.scss'`
+    }
+  }
+}
 ```
 

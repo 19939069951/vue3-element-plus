@@ -2,7 +2,7 @@
  * @Description: 面包屑
  * @Author: Li Guangyin
  * @Date: 2022-02-26 02:43:36
- * @LastEditTime: 2022-02-26 02:57:07
+ * @LastEditTime: 2022-02-26 22:00:34
 -->
 <template>
   <el-breadcrumb :separator-icon="ArrowRight">
@@ -14,13 +14,17 @@
 </template>
 
 <script>
+import { ArrowRight } from '@element-plus/icons-vue'
 export default {
   name: 'BreadCrumb',
+  components:{
+    ArrowRight
+  },
   computed:{
     breadList(){
       return this.$route.matched
     }
-  }
+  },
 }
 </script>
 

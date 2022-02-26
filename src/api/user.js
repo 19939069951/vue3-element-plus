@@ -2,9 +2,9 @@
  * @Description: 用户API
  * @Author: Li Guangyin
  * @Date: 2022-02-24 23:53:26
- * @LastEditTime: 2022-02-26 01:42:13
+ * @LastEditTime: 2022-02-26 18:30:35
  */
-import request from '../utils/request'
+import request from '@/utils/request'
 // 用户登录
 export function login(params){
   return request({

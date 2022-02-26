@@ -2,7 +2,7 @@
  * @Description: 项目整体布局页面
  * @Author: Li Guangyin
  * @Date: 2022-02-23 13:44:46
- * @LastEditTime: 2022-02-26 02:48:37
+ * @LastEditTime: 2022-02-26 18:31:04
 -->
 <template>
   <div class="basic-layout">
@@ -61,9 +61,9 @@
 </template>
 <script>
 import {Fold,Bell,ArrowDownBold,ArrowDown} from '@element-plus/icons'
-import {notice,menuList} from '../api/user'
-import TreeMenu from '../components/TreeMenu.vue'
-import BreadCrumb from '../components/BreadCrumb.vue'
+import {notice,menuList} from '@/api/user'
+import TreeMenu from '@/components/TreeMenu.vue'
+import BreadCrumb from '@/components/BreadCrumb.vue'
 export default{
   name: 'Home',
   components:{
