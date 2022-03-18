@@ -2,7 +2,7 @@
  * @Description: 项目整体布局页面
  * @Author: Li Guangyin
  * @Date: 2022-02-23 13:44:46
- * @LastEditTime: 2022-02-26 18:31:04
+ * @LastEditTime: 2022-02-28 16:16:46
 -->
 <template>
   <div class="basic-layout">
@@ -212,7 +212,7 @@ export default{
       background-color: #eef0f3;
       .main-page{
         height: 100%;
-        background-color: #fff;
+        // background-color: #fff;
       }
     }
   }

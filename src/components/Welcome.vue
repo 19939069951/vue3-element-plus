@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Li Guangyin
  * @Date: 2022-02-23 18:12:15
- * @LastEditTime: 2022-02-25 23:01:08
+ * @LastEditTime: 2022-02-28 16:17:09
 -->
 <template>
   <div class="welcome">
@@ -29,6 +29,7 @@ const count = ref(0)
   justify-content: center;
   align-items: center;
   height: 100%;
+  background-color: #fff;
   .content{
     margin-top: -50px;
     .sub-title{

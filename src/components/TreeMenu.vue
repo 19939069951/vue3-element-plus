@@ -2,7 +2,7 @@
  * @Description: 左侧菜单tree组件
  * @Author: Li Guangyin
  * @Date: 2022-02-26 01:53:35
- * @LastEditTime: 2022-02-26 20:57:11
+ * @LastEditTime: 2022-02-28 16:14:21
 -->
 <template>
   <template v-for="menu in userMenu" :key="menu.id">
@@ -39,7 +39,8 @@
 </template>
 
 <script>
-import {Setting,Avatar} from '@element-plus/icons'
+import {Avatar} from '@element-plus/icons'
+import { Setting} from '@element-plus/icons-vue'
 export default {
   name: "TreeMenu",
   props: {
